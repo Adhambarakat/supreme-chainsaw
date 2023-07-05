@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyNtRT/Ty9Smi2FqiWSs8eq1",
+      "authorship_tag": "ABX9TyNEHPgPG0xtaz2FQ0NpgOnb",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -33,7 +33,9 @@
         "id": "2e5TuLGCa2uZ"
       },
       "outputs": [],
-      "source": []
+      "source": [
+        "import pandas as pd"
+      ]
     }
   ]
 }
