@@ -26,7 +26,6 @@ void setup() {
 
 void loop() {
    int IR = sensor.getIR();
-    Serial.println(IR);
   delay(10);
   if(checkForBeat(IR) == true){
     Serial.println("beat detected");
@@ -40,14 +39,15 @@ void loop() {
       avgbpm+=beats[i];
       avgbpm/=i;
      
-    Serial.print("avgbpm =");
-    Serial.println(avgbpm, 10);    
+        
     
       
      
     }
     Serial.print("avgbpm =");
-    Serial.println(avgbpm,10);   
+    Serial.println(avgbpm,10);  
+    Serial.println(sensor.getGreen());
+    delay(5000); 
     
     
   }
