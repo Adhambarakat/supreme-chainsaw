@@ -8,6 +8,8 @@ long samplesTaken = 0; //Counter for calculating the Hz or read rate
 
 byte interruptPin = 3; //Connect INT pin on breakout board to pin 3
 
+int G[100];
+
 void setup()
 {
   pinMode(interruptPin, INPUT);
@@ -47,28 +49,13 @@ void loop()
   {
     samplesTaken++;
 
-    Serial.print(" R[");
-    Serial.print(particleSensor.getRed());
-    Serial.print("] IR[");
-    Serial.print(particleSensor.getIR());
+
+
     Serial.print("] G[");
     Serial.print(particleSensor.getGreen());
-    Serial.print("] Hz[");
-    Serial.print((float)samplesTaken / ((millis() - startTime) / 1000.0), 2);
-    Serial.print("]");
 
-    if (digitalRead(interruptPin) == LOW) //Hardware way of reading interrupts
-    {
-      Serial.print(" INT!");
-    }
-
-    byte flags = particleSensor.getINT1(); //Software way of reading interrupts
-    if (flags)
-    {
-      Serial.print(" I[");
-      Serial.print(flags, BIN);
-      Serial.print("]");
-    }
+   
+ 
 
     Serial.println();
 
