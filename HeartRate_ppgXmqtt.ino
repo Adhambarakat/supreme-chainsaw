@@ -11,9 +11,16 @@
 #include <Wire.h>
 
 MAX30105 sensor;
+ int beats[10];
+ float beat = 0;
+ int avgbpm = 0;
+ int i = 0;
+ int arrayindex =0; 
+ int x =0;
+
 
 // Update these with values suitable for your network.
-const char* ssid = "Orange-AKHWE";
+const char* ssid = "Mido";
 const char* password = "akwe1603";
 const char* mqtt_server = "7ea331cfad864375a4a189652c9375e0.s1.eu.hivemq.cloud";
 
@@ -32,11 +39,7 @@ int value = 0;
 int hr;
 char hr_out[10];
 
-float green;
-char green_out[20];
-int green_int = (int) green;
-float green_float = (abs(green) - abs(green_int)) * 100000;
-int green_fra = (int)green_float;
+
 
 
 void setup_wifi() {
@@ -202,10 +205,16 @@ void loop() {
     Serial.print("avgbpm =");
     Serial.println(avgbpm,10);
      
-  hr = bpm;
+  hr = avgbpm;
   sprintf(hr_out, "%d",hr);
   client->publish("heartrate", hr_out);
   Serial.print(hr_out);
+
+float green = sensor.getGreen();
+char green_out[20];
+int green_int = (int) green;
+float green_float = (abs(green) - abs(green_int)) * 100000;
+int green_fra = (int)green_float;
 
   green = sensor.getGreen();
   sprintf(green_out, "%d.%d", green_int,green_fra);
