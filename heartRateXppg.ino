@@ -35,7 +35,7 @@ void setup()
 
 void loop()
 {
-  ppg_int = particleSensor.getGreen()*100;
+  ppg_int = particleSensor.getGreen();
   long irValue = particleSensor.getIR();
 
   if (checkForBeat(ppg_int) == true)
@@ -66,7 +66,7 @@ void loop()
   Serial.print(", Avg BPM=");
   Serial.print(beatAvg);
   Serial.print(", PPG=");
-  Serial.print(ppg_int/100);
+  Serial.print(ppg_int);
 
   if (irValue < 50000)
     Serial.print(" No finger?");
