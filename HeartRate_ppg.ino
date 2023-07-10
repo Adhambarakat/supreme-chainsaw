@@ -32,22 +32,26 @@ void loop() {
     float delta = millis()- beat;
     beat = millis();
     int bpm = 60/(delta/1000);
-    Serial.print("BPM =");
-    Serial.println(bpm);
     beats[arrayindex++] = bpm; //adding values to the array
     for(i=0; i<10; i=i+1)
       avgbpm+=beats[i];
-      avgbpm/=i;
-     
-        
-    
+      avgbpm/=i+1;
+
+    Serial.print("BPM ="); 
+    Serial.println(bpm);
+    Serial.print("avgbpm =");
+    Serial.println(avgbpm,10);  
+    Serial.print("G=");
+    Serial.println(sensor.getGreen());
+    if(i == 9){
+    Serial.println('yes');
+    }
       
      
     }
-    Serial.print("avgbpm =");
-    Serial.println(avgbpm,10);  
-    Serial.println(sensor.getGreen());
-    delay(5000); 
+
+   
+ 
     
     
   }
