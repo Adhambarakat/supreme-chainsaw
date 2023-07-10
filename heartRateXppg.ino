@@ -38,7 +38,7 @@ void loop()
   ppg_int = particleSensor.getGreen()*100;
   long irValue = particleSensor.getIR();
 
-  if (checkForBeat(irValue) == true)
+  if (checkForBeat(ppg_int) == true)
   {
     //We sensed a beat!
     long delta = millis() - lastBeat;
